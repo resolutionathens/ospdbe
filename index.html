@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPDBE - Becky's Scrabble Dictionary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Official Scrabble Player's Dictionary</h1>
+        <h2>Becky's Edition</h2>
+        
+        <div class="search-container">
+            <input type="text" id="wordInput" placeholder="Enter a word..." autocomplete="off">
+            <button id="lookupBtn">Look Up</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Does Becky think this is a word?</h3>
+            <div class="modal-buttons">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <p id="resultMessage"></p>
+            <button id="closeBtn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
