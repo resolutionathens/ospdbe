@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.0.12",
+    "vite": "^6.3.3",
+    "wrangler": "^4.13.2"
+  }
+}
