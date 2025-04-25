@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     yesBtn.addEventListener('click', async () => {
         const word = wordInput.value.trim();
         confirmModal.style.display = 'none';
+        // Show result modal and thinking indicator
+        resultModal.style.display = 'block';
+        document.getElementById('thinkingIndicator').style.display = 'flex';
+        resultMessage.style.display = 'none';
         const reply = await sendToAgent(word, true);
         showResult(reply);
     });
@@ -42,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     noBtn.addEventListener('click', async () => {
         const word = wordInput.value.trim();
         confirmModal.style.display = 'none';
+        // Show result modal and thinking indicator
+        resultModal.style.display = 'block';
+        document.getElementById('thinkingIndicator').style.display = 'flex';
+        resultMessage.style.display = 'none';
         const reply = await sendToAgent(word, false);
         showResult(reply);
     });
@@ -50,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', () => {
         resultModal.style.display = 'none';
         wordInput.value = ''; // Clear input
+        // Reset thinking/result state
+        document.getElementById('thinkingIndicator').style.display = 'none';
+        resultMessage.style.display = 'block';
     });
 
     // Close modal when clicking outside
@@ -57,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === resultModal) {
             resultModal.style.display = 'none';
             wordInput.value = ''; // Clear input
+            // Reset thinking/result state
+            document.getElementById('thinkingIndicator').style.display = 'none';
+            resultMessage.style.display = 'block';
         }
     });
 
@@ -64,7 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function showResult(agentReply) {
         const modalContent = resultModal.querySelector('.modal-content');
         modalContent.className = 'modal-content success';
+        // Hide thinking indicator, show result message
+        document.getElementById('thinkingIndicator').style.display = 'none';
         resultMessage.textContent = agentReply;
+        resultMessage.style.display = 'block';
         resultModal.style.display = 'block';
     }
 
