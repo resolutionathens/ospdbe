@@ -3,3 +3,6 @@ compatibility_date = "2025-04-03"
 main = "./src/index.ts"
 [ai]
 binding = "AI"
+
+[pages]
+pages_build_output_dir = "."
