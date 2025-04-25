@@ -6,4 +6,5 @@ main = "./src/index.ts"
 binding = "AI"
 
 [pages]
+project= "ospdbe"
 pages_build_output_dir = "."
