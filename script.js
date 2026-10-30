@@ -9,6 +9,18 @@ async function sendToAgent(word, beckyThinksIsWord) {
     return data.reply;
 }
 
+// Renders the model's light markdown (bold, italics, line breaks) as safe HTML
+function renderMarkdown(text) {
+    return String(text)
+        .trim()
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\*\*(.+?)\*\*|__(.+?)__/g, '<strong>$1$2</strong>')
+        .replace(/\*(.+?)\*|\b_(.+?)_\b/g, '<em>$1$2</em>')
+        .replace(/\n/g, '<br>');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Get DOM elements
     const wordInput = document.getElementById('wordInput');
@@ -80,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalContent.className = 'modal-content success';
         // Hide thinking indicator, show result message
         document.getElementById('thinkingIndicator').style.display = 'none';
-        resultMessage.textContent = agentReply;
+        resultMessage.innerHTML = renderMarkdown(agentReply);
         resultMessage.style.display = 'block';
         resultModal.style.display = 'block';
     }
